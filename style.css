@@ -96,22 +96,22 @@ body {
   background-color: white;
   border-radius: 0 0 15px 15px;
 }
-.footer-content figure img {
+.figure-container img {
   width: 100px;
   height: 100px;
   object-fit: contain;
 }
-.footer-content figure {
+.figure-container {
   padding: 15px;
   background-color: var(--ligthPurple);
   border-radius: 10px;
   margin: 10px;
 }
-.footer-content figure:hover {
+.figure-container:hover {
   cursor: pointer;
   background-color: var(--purple);
 }
-.footer-content div {
+#pokemons-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
