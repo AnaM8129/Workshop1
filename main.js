@@ -1,7 +1,6 @@
 //CAPTURAR DATOS SOBRE LA API
 const URL_API = "https://pokeapi.co/api/v2/pokemon";
 const pokemonsContainer = document.getElementById("pokemons-container");
-const arrayPokemons = [];
 const pokemonName = document.getElementById("pokemonName");
 const pokemonImgBig = document.querySelector(".image-charizard");
 const noPokemon = document.getElementById("no");
@@ -11,31 +10,21 @@ const abilityPokemon = document.getElementById("ability");
 const heightPokemon = document.getElementById("height");
 const weightPokemon = document.getElementById("weight");
 const form = document.getElementById("form");
+let pokeFilter = '';
+
 
 //OBTENER POKEMONES
-const getPokemons = async () => {
+const getPokemons = async (inputValue='') => {
   try {
-    const {
-      data: { results },
-    } = await axios.get(URL_API);
-    results.forEach(async (result, index) => {
+    const { data: { results } } = await axios.get(URL_API);
+    pokeFilter = inputValue ? results.filter((poke) => poke.name.toLowerCase().includes(inputValue.toLowerCase())) : results;
+    const arrayPokemons = [];
+    pokeFilter.forEach(async (result, index) => {
       const abilitiesList = [];
       const typesList = [];
       const {
-        data: {
-          id,
-          name,
-          order,
-          base_experience,
-          height,
-          weight,
-          types,
-          abilities,
-          sprites: {
-            other: {
-              dream_world: { front_default },
-            },
-          },
+        data: { id, name, order, base_experience, height, weight, types, abilities,
+          sprites: {other: { dream_world: { front_default },},},
         },
       } = await axios.get(result.url);
       abilities.forEach((abilitie) => {
@@ -56,7 +45,7 @@ const getPokemons = async () => {
         abilities: abilitiesList,
       };
       arrayPokemons.push(newPokemon);
-      if (index + 1 === results.length) {
+      if (index + 1 === pokeFilter.length) {
         renderPokemons(arrayPokemons);
         popUp(arrayPokemons);
       }
@@ -121,8 +110,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputPokemon = document.getElementById("input");
   const inputValue = inputPokemon.value;
-  // if (inputValue) {
-  //   console.log(inputValue)
-  //   getPokemonsDos(URL_API, inputValue);
-  // }
+  if (inputValue) {
+    getPokemons(inputValue);
+  }
 });
