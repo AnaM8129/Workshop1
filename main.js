@@ -30,7 +30,6 @@ const getPokemons = async (inputValue = "") => {
       const abilitiesList = [];
       const typesList = [];
       const iconsList = [];
-
       const {
         data: {
           id,
@@ -57,14 +56,13 @@ const getPokemons = async (inputValue = "") => {
           `${URL_API_ICONS}?name=${type.type.name}`
         );
         iconsList.push(data[0].icon);
-        // console.log(iconsList)
       });
       const newPokemon = {
         id: id,
         name: name,
         number: order,
         image: front_default,
-        weight: weight * 0.1,
+        weight: Number((weight * 0.1).toFixed(2)),
         height: Number((height * 0.1).toFixed(2)),
         level: base_experience,
         type: typesList,
@@ -75,8 +73,6 @@ const getPokemons = async (inputValue = "") => {
       if (index + 1 === pokeFilter.length) {
         renderPokemons(arrayPokemons);
         popUp(arrayPokemons);
-        getIcons(arrayPokemons);
-        console.log(arrayPokemons);
       }
     });
   } catch (error) {
@@ -84,16 +80,6 @@ const getPokemons = async (inputValue = "") => {
   }
 };
 getPokemons();
-
-//GET ELEMENTS ICONS
-const getIcons = async () => {
-  try {
-    const { data } = await axios.get(`${URL_API_ICONS}?name=bug`);
-    console.log(data[0].icon);
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 // RENDER POKEMONS MINI
 const renderPokemons = (arrayPokemons) => {
@@ -116,7 +102,7 @@ const renderPokemons = (arrayPokemons) => {
 const popUp = (arrayPokemons) => {
   pokemonsContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("clickMe")) {
-      iconsContainer.innerHTML = '';
+      iconsContainer.innerHTML = "";
       arrayPokemons.forEach((pokemon) => {
         if (pokemon.id == e.target.id) {
           pokemonName.innerText = pokemon.name.toUpperCase();
@@ -136,10 +122,10 @@ const popUp = (arrayPokemons) => {
           typePokemon.innerText = "";
           abilityPokemon.innerText = "";
           pokemon.type.forEach((type) => {
-            typePokemon.innerText += type.toUpperCase();
+            typePokemon.innerHTML += `${type.toUpperCase()} <span class="hidden">_</span>`;
           });
           pokemon.abilities.forEach((abilitie) => {
-            abilityPokemon.innerText += abilitie.toUpperCase();
+            abilityPokemon.innerHTML += `${abilitie.toUpperCase()} <span class="hidden">_</span>`;
           });
           heightPokemon.innerText = `${pokemon.height} m`;
           weight.innerText = `${pokemon.weight} kg`;
@@ -154,7 +140,5 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   const inputPokemon = document.getElementById("input");
   const inputValue = inputPokemon.value;
-  if (inputValue) {
-    getPokemons(inputValue);
-  }
+  getPokemons(inputValue);
 });
