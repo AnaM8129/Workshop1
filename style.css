@@ -22,9 +22,14 @@ body {
   background-color: var(--purple);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 15px;
   gap: 10px;
   border-radius: 15px 15px 0 0;
+}
+
+.headerDiv{
+  display: flex;
 }
 
 .encabezado figure img {
@@ -34,6 +39,36 @@ body {
   color: white;
   text-transform: uppercase;
 }
+
+input{
+  border: none;
+  padding: 10px;
+  background-color: var(--ligthPurple);
+  border-radius: 10px;
+  width: 300px;
+}
+
+input:focus{
+  outline: 0px;
+}
+
+button{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  border: none;
+  color: var(--purple);
+  font-weight: bold;
+}
+
+button:hover{
+  background-color: #b66ada;;
+  color: white;
+  border: 1px solid white;
+}
+
+
+
 .main-container {
   display: flex;
   justify-content: center;

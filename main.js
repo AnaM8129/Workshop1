@@ -1,7 +1,6 @@
 //CAPTURAR DATOS SOBRE LA API
 const URL_API = "https://pokeapi.co/api/v2/pokemon";
 const pokemonsContainer = document.getElementById("pokemons-container");
-const arrayPokemons2 = [];
 const arrayPokemons = [];
 const pokemonName = document.getElementById("pokemonName");
 const pokemonImgBig = document.querySelector(".image-charizard");
@@ -11,6 +10,7 @@ const typePokemon = document.getElementById("type");
 const abilityPokemon = document.getElementById("ability");
 const heightPokemon = document.getElementById("height");
 const weightPokemon = document.getElementById("weight");
+const form = document.getElementById("form");
 
 //OBTENER POKEMONES
 const getPokemons = async () => {
@@ -115,3 +115,14 @@ const popUp = (arrayPokemons) => {
     }
   });
 };
+
+//FILTER
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const inputPokemon = document.getElementById("input");
+  const inputValue = inputPokemon.value;
+  // if (inputValue) {
+  //   console.log(inputValue)
+  //   getPokemonsDos(URL_API, inputValue);
+  // }
+});
