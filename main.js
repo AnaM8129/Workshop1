@@ -1,5 +1,6 @@
 //CAPTURAR DATOS SOBRE LA API
 const URL_API = "https://pokeapi.co/api/v2/pokemon";
+const URL_API_ICONS = "http://localhost:3000/elementsIcons";
 const pokemonsContainer = document.getElementById("pokemons-container");
 const pokemonName = document.getElementById("pokemonName");
 const pokemonImgBig = document.querySelector(".image-charizard");
@@ -10,28 +11,53 @@ const abilityPokemon = document.getElementById("ability");
 const heightPokemon = document.getElementById("height");
 const weightPokemon = document.getElementById("weight");
 const form = document.getElementById("form");
-let pokeFilter = '';
-
+const iconsContainer = document.getElementById("iconsContainer");
+let pokeFilter = "";
 
 //OBTENER POKEMONES
-const getPokemons = async (inputValue='') => {
+const getPokemons = async (inputValue = "") => {
   try {
-    const { data: { results } } = await axios.get(URL_API);
-    pokeFilter = inputValue ? results.filter((poke) => poke.name.toLowerCase().includes(inputValue.toLowerCase())) : results;
     const arrayPokemons = [];
+    const {
+      data: { results },
+    } = await axios.get(URL_API);
+    pokeFilter = inputValue
+      ? results.filter((poke) =>
+          poke.name.toLowerCase().includes(inputValue.toLowerCase())
+        )
+      : results;
     pokeFilter.forEach(async (result, index) => {
       const abilitiesList = [];
       const typesList = [];
+      const iconsList = [];
+
       const {
-        data: { id, name, order, base_experience, height, weight, types, abilities,
-          sprites: {other: { dream_world: { front_default },},},
+        data: {
+          id,
+          name,
+          order,
+          base_experience,
+          height,
+          weight,
+          types,
+          abilities,
+          sprites: {
+            other: {
+              dream_world: { front_default },
+            },
+          },
         },
       } = await axios.get(result.url);
       abilities.forEach((abilitie) => {
         abilitiesList.push(abilitie.ability.name);
       });
-      types.forEach((type) => {
+      types.forEach(async (type) => {
         typesList.push(type.type.name);
+        const { data } = await axios.get(
+          `${URL_API_ICONS}?name=${type.type.name}`
+        );
+        iconsList.push(data[0].icon);
+        // console.log(iconsList)
       });
       const newPokemon = {
         id: id,
@@ -43,11 +69,14 @@ const getPokemons = async (inputValue='') => {
         level: base_experience,
         type: typesList,
         abilities: abilitiesList,
+        iconElement: iconsList,
       };
       arrayPokemons.push(newPokemon);
       if (index + 1 === pokeFilter.length) {
         renderPokemons(arrayPokemons);
         popUp(arrayPokemons);
+        getIcons(arrayPokemons);
+        console.log(arrayPokemons);
       }
     });
   } catch (error) {
@@ -55,6 +84,16 @@ const getPokemons = async (inputValue='') => {
   }
 };
 getPokemons();
+
+//GET ELEMENTS ICONS
+const getIcons = async () => {
+  try {
+    const { data } = await axios.get(`${URL_API_ICONS}?name=bug`);
+    console.log(data[0].icon);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // RENDER POKEMONS MINI
 const renderPokemons = (arrayPokemons) => {
@@ -77,12 +116,17 @@ const renderPokemons = (arrayPokemons) => {
 const popUp = (arrayPokemons) => {
   pokemonsContainer.addEventListener("click", (e) => {
     if (e.target.classList.contains("clickMe")) {
-      console.log("hice Click");
-      console.log(e.target.id);
+      iconsContainer.innerHTML = '';
       arrayPokemons.forEach((pokemon) => {
         if (pokemon.id == e.target.id) {
-          console.log(pokemon);
           pokemonName.innerText = pokemon.name.toUpperCase();
+          pokemon.iconElement.forEach((element) => {
+            iconsContainer.innerHTML += `
+            <img
+              src="${element}"
+              alt="llama"
+            />`;
+          });
           pokemonImgBig.innerHTML = `<img
             src="${pokemon.image}"
             alt="pokemonImg"
