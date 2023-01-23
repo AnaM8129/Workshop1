@@ -28,19 +28,22 @@ body {
   border-radius: 15px 15px 0 0;
 }
 
-.headerDiv{
+.headerDiv {
   display: flex;
 }
 
 .encabezado figure img {
-  width: 50px;
+  width: 40px;
 }
 .encabezado h2 {
   color: white;
   text-transform: uppercase;
 }
-
-input{
+#title {
+  margin-left: 20px;
+  color: white;
+}
+input {
   border: none;
   padding: 10px;
   background-color: var(--ligthPurple);
@@ -48,11 +51,11 @@ input{
   width: 300px;
 }
 
-input:focus{
+input:focus {
   outline: 0px;
 }
 
-button{
+button {
   padding: 10px;
   border-radius: 10px;
   background-color: white;
@@ -61,13 +64,11 @@ button{
   font-weight: bold;
 }
 
-button:hover{
-  background-color: #b66ada;;
+button:hover {
+  background-color: #b66ada;
   color: white;
   border: 1px solid white;
 }
-
-
 
 .main-container {
   display: flex;
@@ -96,7 +97,8 @@ button:hover{
   height: 50px;
 }
 .image-charizard {
-  width: 100%;
+  width: 70%;
+  margin: auto;
 }
 .image-charizard img {
   width: 100%;
@@ -105,17 +107,26 @@ button:hover{
 .info-pokemon {
   background-color: white;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   padding: 25px;
   border-radius: 15px;
   width: 40%;
   gap: 20px;
 }
-.row-info {
+.info-pokemon_first-section {
+  text-align: center;
+  width: 50%;
+  padding-top: 40px;
+}
+.info-pokemon_second-section {
+  text-align: center;
+  width: 50%;
+  padding-top: 40px;
+}
+.row-item {
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .title-info {
   font-size: 20px;
@@ -123,6 +134,7 @@ button:hover{
 .info-text {
   font-size: 24px;
   font-weight: bolder;
+  color: var(--purple);
 }
 .footer-content {
   display: flex;
@@ -131,6 +143,9 @@ button:hover{
   gap: 30px;
   background-color: white;
   border-radius: 0 0 15px 15px;
+}
+.footer-content h3 {
+  color: var(--purple);
 }
 .figure-container img {
   width: 100px;
@@ -155,7 +170,7 @@ button:hover{
   width: 65%;
 }
 
-.hidden{
+.hidden {
   color: rgba(0, 0, 0, 0);
 }
 
@@ -166,6 +181,14 @@ button:hover{
   .encabezado {
     justify-content: center;
     width: 60%;
+    display: block;
+  }
+  #form {
+    margin-top: 20px;
+  }
+  #button {
+    margin-top: 10px;
+    width: 100%;
   }
   .main-container {
     flex-direction: column;
@@ -179,19 +202,34 @@ button:hover{
   .image-charizard {
     width: 80%;
     margin-left: 30px;
+    margin-bottom: 10px;
   }
   .info-pokemon {
-    width: 85%;
-    height: 60vh;
+    width: 95%;
+    height: 65vh;
     transform: translateY(-80px);
+    display: block;
+    padding: 10px 10px 10px 15px;
   }
-  .row-info {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  .info-pokemon_first-section {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .info-pokemon_second-section {
+    width: 100%;
+    padding-top: 0;
   }
   .row-item {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+  }
+  .title-info {
+    margin-right: 5px;
+  }
+  .info-text {
+    font-size: 20px;
+    text-align: left;
   }
   .footer-content {
     width: 60%;

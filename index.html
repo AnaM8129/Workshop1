@@ -18,13 +18,16 @@
     <header class="encabezado">
       <div class="headerDiv">
         <figure class="pokeball">
-          <img src="https://www.pngall.com/wp-content/uploads/4/Pokeball-PNG-Images.png" alt="logo" />
+          <img
+            src="https://www.pngkit.com/png/full/19-190666_pokeball-graphic-by-maratuna-on-deviantart-banner-free.png"
+            alt="logo"
+          />
         </figure>
-        <h1>Pokedex_</h1>
+        <h1 id="title">Pokedex_</h1>
       </div>
       <form action="submit" id="form">
-        <input type="text" placeholder="Pokemon name" id="input">
-        <button>Search</button>
+        <input type="text" placeholder="Pokemon name" id="input" />
+        <button id="button">Search</button>
       </form>
     </header>
     <main class="main-container">
@@ -46,36 +49,34 @@
         </figure>
       </section>
       <article class="info-pokemon">
-        <div class="row-info">
+        <section class="info-pokemon_first-section">
           <div class="row-item">
             <span class="title-info">No.</span>
             <span class="info-text" id="no">006</span>
           </div>
           <div class="row-item">
-            <span class="title-info">LEVEL</span>
-            <span class="info-text" id="level">100</span>
-          </div>
-        </div>
-        <div class="row-info">
-          <div class="row-item">
             <span class="title-info">TYPE</span>
             <span class="info-text" id="type">FIRE</span>
           </div>
           <div class="row-item">
-            <span class="title-info">ABILITY</span>
-            <span class="info-text" id="ability">FLAMES</span>
-          </div>
-        </div>
-        <div class="row-info">
-          <div class="row-item">
             <span class="title-info">HEIGHT</span>
             <span class="info-text" id="height">1.7 m</span>
+          </div>
+        </section>
+        <section class="info-pokemon_second-section">
+          <div class="row-item">
+            <span class="title-info">LEVEL</span>
+            <span class="info-text" id="level">100</span>
+          </div>
+          <div class="row-item">
+            <span class="title-info">HABILITY</span>
+            <span class="info-text" id="ability">FLAMES</span>
           </div>
           <div class="row-item">
             <span class="title-info">WEIGHT</span>
             <span class="info-text" id="weight">90.5 Kg</span>
           </div>
-        </div>
+        </section>
       </article>
     </main>
     <footer class="footer-content">
