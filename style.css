@@ -15,7 +15,8 @@
 body {
   background-color: var(--ligthGray);
   padding: 25px;
-  min-width: 600px;
+  /* min-width: 600px; */
+  width: 100%;
 }
 
 .encabezado {
@@ -175,16 +176,16 @@ button:hover {
 }
 
 @media screen and (max-width: 450px) {
-  body {
-    width: 100%;
-  }
   .encabezado {
     justify-content: center;
-    width: 60%;
+    width: 100%;
     display: block;
   }
   #form {
     margin-top: 20px;
+  }
+  #input {
+    width: 100%;
   }
   #button {
     margin-top: 10px;
@@ -193,7 +194,7 @@ button:hover {
   .main-container {
     flex-direction: column;
     align-items: center;
-    width: 60%;
+    width: 100%;
   }
   .charizard-container {
     width: 90%;
@@ -223,16 +224,17 @@ button:hover {
     margin-bottom: 15px;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
   }
   .title-info {
     margin-right: 5px;
   }
   .info-text {
     font-size: 20px;
-    text-align: left;
   }
+
   .footer-content {
-    width: 60%;
+    width: 100%;
     display: block;
     gap: 10px;
     background-color: white;
