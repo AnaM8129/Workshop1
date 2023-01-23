@@ -238,7 +238,7 @@ button:hover {
     display: block;
     gap: 10px;
     background-color: white;
-    height: 220vh;
+    height: 100%;
     padding: 10px;
   }
   .footer-content h3 {
