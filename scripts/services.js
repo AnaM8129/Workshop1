@@ -10,7 +10,6 @@ export const APIPokemons = async () => {
 
   } catch (error) {
       console.log(error);
-      console.log('no funciono');
   }
 };
 
@@ -20,6 +19,5 @@ export const getAPIPokemonsURL = async (result) => {
         return data;
     } catch (error) {
         console.log(error);
-        console.log('no funciono');
     }
 }
