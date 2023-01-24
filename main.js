@@ -5,7 +5,7 @@ import { styleNumber } from "./scripts/helpers.js";
 import { renderPokemons, popUp } from "./scripts/ui.js";
 
 const form = document.getElementById("form");
-const arrayPokemons = [];
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   //CALL API POKEMONS
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const getPokemons = (inputValue = "") => {
     //CREATE POKEMONS ARRAY BASED ON SEARCHES
+    const arrayPokemons = [];
     const pokeFilter = inputValue
       ? results.filter((poke) =>
           poke.name.toLowerCase().includes(inputValue.toLowerCase())
