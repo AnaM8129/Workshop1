@@ -12,6 +12,7 @@ const weightPokemon = document.getElementById("weight");
 // RENDER POKEMONS MINI CARD
 export const renderPokemons = (arrayPokemons) => {
   pokemonsContainer.innerHTML = '';
+
   arrayPokemons.forEach((element) => {
     pokemonsContainer.innerHTML += `
         <div class="figure-container" >

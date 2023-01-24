@@ -6,14 +6,15 @@ import { renderPokemons, popUp } from "./scripts/ui.js";
 
 const form = document.getElementById("form");
 
-
 document.addEventListener("DOMContentLoaded", async () => {
   //CALL API POKEMONS
   const results = await APIPokemons();
 
   const getPokemons = (inputValue = "") => {
     //CREATE POKEMONS ARRAY BASED ON SEARCHES
+
     const arrayPokemons = [];
+
     const pokeFilter = inputValue
       ? results.filter((poke) =>
           poke.name.toLowerCase().includes(inputValue.toLowerCase())
