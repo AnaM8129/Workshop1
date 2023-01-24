@@ -2,7 +2,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 :root {
@@ -14,25 +15,62 @@
 body {
   background-color: var(--ligthGray);
   padding: 25px;
-  min-width: 600px;
+  /* min-width: 600px; */
+  width: 100%;
 }
 
 .encabezado {
   background-color: var(--purple);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 15px;
   gap: 10px;
   border-radius: 15px 15px 0 0;
 }
 
+.headerDiv {
+  display: flex;
+}
+
 .encabezado figure img {
-  width: 50px;
+  width: 40px;
 }
 .encabezado h2 {
   color: white;
   text-transform: uppercase;
 }
+#title {
+  margin-left: 20px;
+  color: white;
+}
+input {
+  border: none;
+  padding: 10px;
+  background-color: var(--ligthPurple);
+  border-radius: 10px;
+  width: 300px;
+}
+
+input:focus {
+  outline: 0px;
+}
+
+button {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  border: none;
+  color: var(--purple);
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #b66ada;
+  color: white;
+  border: 1px solid white;
+}
+
 .main-container {
   display: flex;
   justify-content: center;
@@ -60,7 +98,8 @@ body {
   height: 50px;
 }
 .image-charizard {
-  width: 100%;
+  width: 70%;
+  margin: auto;
 }
 .image-charizard img {
   width: 100%;
@@ -69,17 +108,26 @@ body {
 .info-pokemon {
   background-color: white;
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   padding: 25px;
   border-radius: 15px;
   width: 40%;
   gap: 20px;
 }
-.row-info {
+.info-pokemon_first-section {
+  text-align: center;
+  width: 50%;
+  padding-top: 40px;
+}
+.info-pokemon_second-section {
+  text-align: center;
+  width: 50%;
+  padding-top: 40px;
+}
+.row-item {
+  margin-bottom: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .title-info {
   font-size: 20px;
@@ -87,6 +135,7 @@ body {
 .info-text {
   font-size: 24px;
   font-weight: bolder;
+  color: var(--purple);
 }
 .footer-content {
   display: flex;
@@ -96,22 +145,25 @@ body {
   background-color: white;
   border-radius: 0 0 15px 15px;
 }
-.footer-content figure img {
+.footer-content h3 {
+  color: var(--purple);
+}
+.figure-container img {
   width: 100px;
   height: 100px;
   object-fit: contain;
 }
-.footer-content figure {
+.figure-container {
   padding: 15px;
   background-color: var(--ligthPurple);
   border-radius: 10px;
   margin: 10px;
 }
-.footer-content figure:hover {
+.figure-container:hover {
   cursor: pointer;
   background-color: var(--purple);
 }
-.footer-content div {
+#pokemons-container {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -119,21 +171,87 @@ body {
   width: 65%;
 }
 
-@media screen and (max-width: 480px) {
+.hidden {
+  color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-width: 450px) {
   .encabezado {
     justify-content: center;
+    width: 100%;
+    display: block;
+  }
+  #form {
+    margin-top: 20px;
+  }
+  #input {
+    width: 100%;
+  }
+  #button {
+    margin-top: 10px;
+    width: 100%;
   }
   .main-container {
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
   .charizard-container {
     width: 90%;
     z-index: 2;
   }
+  .image-charizard {
+    width: 80%;
+    margin-left: 30px;
+    margin-bottom: 10px;
+  }
   .info-pokemon {
-    width: 85%;
-    height: 60vh;
-    transform: translateY(-100px);
+    width: 95%;
+    height: 65vh;
+    transform: translateY(-80px);
+    display: block;
+    padding: 10px 10px 10px 15px;
+  }
+  .info-pokemon_first-section {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .info-pokemon_second-section {
+    width: 100%;
+    padding-top: 0;
+  }
+  .row-item {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .title-info {
+    margin-right: 5px;
+  }
+  .info-text {
+    font-size: 20px;
+  }
+
+  .footer-content {
+    width: 100%;
+    display: block;
+    gap: 10px;
+    background-color: white;
+    height: 100%;
+    padding: 10px;
+  }
+  .footer-content h3 {
+    text-align: center;
+  }
+  #pokemons-container {
+    padding: 5px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .figure-container {
+    padding: 10px;
+    margin: 5px;
   }
 }
